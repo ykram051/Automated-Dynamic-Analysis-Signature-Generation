@@ -1,0 +1,140 @@
+\documentclass[11pt]{article}
+\usepackage{geometry}
+\geometry{margin=1in}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\setlength{\parskip}{0.5em}
+
+\title{Project Plan: Automated Dynamic Analysis Signature Generation (Project 3)}
+\author{Ikram Benfellah, Fadel Fatima Zahra}
+\date{January 25, 2026}
+
+\begin{document}
+\maketitle
+
+\section{Project Information}
+\begin{itemize}[leftmargin=*, itemsep=0pt]
+    \item \textbf{Project Title:} Automated Dynamic Analysis Signature Generation
+    \item \textbf{Project Number:} 3
+    \item \textbf{Team Members:} Ikram Benfellah (Lead Developer), Fadel Fatima Zahra (Research Lead)
+    \item \textbf{GitHub Repository:} \url{https://github.com/yourusername/your-repo}
+\end{itemize}
+
+\section{Methodology}
+\textbf{High-level Approach:}
+\begin{enumerate}[leftmargin=*, itemsep=0pt]
+    \item Parse CAPEv2 JSON logs to extract behavioral patterns (API calls, network, file ops).
+    \item Use LLMs to identify and summarize key behaviors.
+    \item Automatically generate Python-based CAPEv2 signatures.
+    \item Map behaviors to MITRE ATT\&CK techniques.
+    \item (Optional) Generate comprehensive, human-readable malware analysis reports.
+\end{enumerate}
+
+\textbf{System Architecture:}
+\begin{center}
+\includegraphics[width=0.2\textwidth]{architecture_diagram.png}
+\end{center}
+
+\textbf{Key Components:}
+\begin{itemize}[leftmargin=*, itemsep=0pt]
+    \item \textbf{Log Parser:} Extracts features from CAPEv2 JSON logs.
+    \item \textbf{Behavior Analyzer:} Uses LLMs to detect behavioral patterns.
+    \item \textbf{Signature Generator:} Produces Python signature classes.
+    \item \textbf{ATT\&CK Mapper:} Maps behaviors to MITRE ATT\&CK techniques.
+    \item \textbf{Report Generator:} (Optional) Creates vendor-style analysis reports.
+\end{itemize}
+
+\textbf{Technology Stack:}
+\begin{itemize}[leftmargin=*, itemsep=0pt]
+    \item Python 3.10+, PyTorch/Transformers (for LLMs), CAPEv2, MITRE ATT\&CK framework, LaTeX (reporting)
+\end{itemize}
+
+\section{Implementation Plan}
+\textbf{Timeline and Milestones:}
+\begin{itemize}[leftmargin=*, itemsep=0pt]
+    \item \textbf{Jan 25:} Project plan submission
+    \item \textbf{Feb 1-10:} Dataset acquisition and preprocessing
+    \item \textbf{Feb 11-20:} Log parser and feature extraction
+    \item \textbf{Feb 21-Mar 1:} LLM-based behavior analysis
+    \item \textbf{Mar 2-10:} Signature generation and validation
+    \item \textbf{Mar 11-15:} MITRE ATT\&CK mapping
+    \item \textbf{Mar 16-20:} Report generation, evaluation, and final write-up
+    \item \textbf{Mar 22:} Final submission
+\end{itemize}
+
+\textbf{Task Breakdown:}
+\begin{itemize}[leftmargin=*, itemsep=0pt]
+    \item \textbf{Dataset download and organization:} Ikram
+    \item \textbf{Dataset cleaning and statistics:} Fatima Zahra
+    \item \textbf{Log parsing module (lead):} Fatima Zahra
+    \item \textbf{Log parsing module (support/testing):} Ikram
+    \item \textbf{Feature extraction script (lead):} Ikram
+    \item \textbf{Feature extraction script (support):} Fatima Zahra
+    \item \textbf{LLM prompt design and integration (lead):} Fatima Zahra
+    \item \textbf{LLM output post-processing (support):} Ikram
+    \item \textbf{Signature class code generation (lead):} Ikram
+    \item \textbf{Signature validation (unit tests, lead):} Fatima Zahra
+    \item \textbf{MITRE ATT\&CK mapping research (lead):} Ikram
+    \item \textbf{MITRE ATT\&CK mapping implementation (lead):} Fatima Zahra
+    \item \textbf{Report generator (draft, lead):} Fatima Zahra
+    \item \textbf{Report generator (review and polish, support):} Ikram
+    \item \textbf{Evaluation metrics calculation (lead):} Ikram
+    \item \textbf{Baseline comparison experiments (lead):} Fatima Zahra
+    \item \textbf{Final report writing:} Both
+\end{itemize}
+
+\textbf{Dependencies and Risks:}
+\begin{itemize}[leftmargin=*, itemsep=0pt]
+    \item LLM access (API limits, cost)
+    \item Dataset size/quality
+    \item CAPEv2 compatibility
+    \item Mitigation: Early testing, fallback to manual feature extraction if needed
+\end{itemize}
+
+\section{Research Component}
+\subsection{Research Questions}
+\begin{enumerate}[leftmargin=*, itemsep=0pt]
+    \item How accurate are LLM-generated behavioral signatures compared to manually crafted ones?
+    \item Can automated signature generation reduce malware analysis time?
+    \item How well do generated signatures generalize to new malware variants?
+\end{enumerate}
+
+
+\subsection{Related Work}
+\begin{table}[h!]
+\centering
+\begin{tabular}{|p{2.5cm}|p{3cm}|p{3cm}|p{3cm}|}
+\hline
+\textbf{Paper/Tool} & \textbf{Approach} & \textbf{Key Contribution} & \textbf{Our Difference} \\
+\hline
+\href{https://arxiv.org/pdf/1711.08336}{DeepSign (2017)} & Deep learning (DBN) for automatic malware signature generation from sandbox logs & Demonstrates that deep learning can generate robust, invariant behavioral signatures for malware classification & We focus on generating actionable CAPEv2 Python signatures and mapping to MITRE ATT\&CK, with LLM-based automation \\
+\hline
+\href{https://github.com/cmikke97/Automatic-Malware-Signature-Generation}{Automatic-Malware-Signature-Generation (GitHub)} & Open-source tool for automated malware signature generation & Provides practical implementation and code for signature automation & Our work targets CAPEv2 format, integrates MITRE ATT\&CK mapping, and explores LLM-driven signature synthesis \\
+\hline
+\href{https://www.emergentmind.com/topics/llm-virus}{LLM-Virus (EmergentMind)} & Explores LLMs for malware analysis and signature creation & Highlights the potential of LLMs for automating malware signature generation and analysis & We apply LLMs specifically to automate CAPEv2 signature creation from sandbox logs and behavioral patterns \\
+\hline
+\end{tabular}
+\caption{Related work comparison}
+\end{table}
+
+Recent research has explored the use of deep learning and large language models (LLMs) for automating malware signature generation and behavioral analysis. DeepSign (David et al., 2017) introduced a deep belief network approach for generating robust malware signatures from sandbox logs, demonstrating high accuracy in classifying new variants. Open-source projects such as Automatic-Malware-Signature-Generation provide practical tools for automating signature creation, though they may not target the CAPEv2 format or integrate MITRE ATT\&CK mapping. The LLM-Virus topic and related discussions highlight the growing interest in leveraging LLMs for malware analysis and signature automation. Our work builds on these foundations by focusing on the automated generation of actionable CAPEv2 Python signatures from sandbox execution logs, mapping behaviors to MITRE ATT\&CK techniques, and synthesizing comprehensive analysis reports using LLMs.
+
+\subsection{Dataset Selection}
+\begin{itemize}[leftmargin=*, itemsep=0pt]
+    \item \textbf{Dataset:} AVAST-CTU CAPEv2 Dataset (\url{https://github.com/avast/avast-ctu-cape-dataset})
+    \item \textbf{Justification:} Large, diverse, public, includes CAPEv2 logs
+    \item \textbf{Statistics:} $>$100,000 samples, multiple malware families
+    \item \textbf{Preprocessing:} Filter for relevant behaviors, split into train/val/test
+    \item \textbf{Split Strategy:} Chronological partitioning to avoid data leakage
+\end{itemize}
+
+\section{Evaluation Plan}
+\begin{itemize}[leftmargin=*, itemsep=0pt]
+    \item \textbf{Metrics:} Precision, recall, F1-score (signature quality), coverage, ATT\&CK mapping accuracy, report quality (expert review), efficiency (time savings)
+    \item \textbf{Baselines:} Existing CAPEv2 signatures, manual analyst signatures, rule-based detection
+    \item \textbf{Experimental Setup:} Evaluate on held-out test set, compare to baselines, statistical significance via paired t-test
+    \item \textbf{Expected Outcomes:} LLM-generated signatures are competitive with manual, improve efficiency, and provide robust ATT\&CK mapping
+\end{itemize}
+
+\end{document}

@@ -17,7 +17,7 @@
 \begin{itemize}[leftmargin=*, itemsep=0pt]
     \item \textbf{Project Title:} Automated Dynamic Analysis Signature Generation
     \item \textbf{Project Number:} 3
-    \item \textbf{Team Members:} Ikram Benfellah (Lead Developer), Fadel Fatima Zahra (Research Lead)
+    \item \textbf{Team Members:} Ikram Benfellah , Fadel Fatima Zahra
     \item \textbf{GitHub Repository:} \url{https://github.com/yourusername/your-repo}
 \end{itemize}
 
@@ -33,17 +33,9 @@
 
 \textbf{System Architecture:}
 \begin{center}
-\includegraphics[width=0.2\textwidth]{architecture_diagram.png}
+\includegraphics[width=1.1\textwidth]{architecture_diagram.png}
 \end{center}
 
-\textbf{Key Components:}
-\begin{itemize}[leftmargin=*, itemsep=0pt]
-    \item \textbf{Log Parser:} Extracts features from CAPEv2 JSON logs.
-    \item \textbf{Behavior Analyzer:} Uses LLMs to detect behavioral patterns.
-    \item \textbf{Signature Generator:} Produces Python signature classes.
-    \item \textbf{ATT\&CK Mapper:} Maps behaviors to MITRE ATT\&CK techniques.
-    \item \textbf{Report Generator:} (Optional) Creates vendor-style analysis reports.
-\end{itemize}
 
 \textbf{Technology Stack:}
 \begin{itemize}[leftmargin=*, itemsep=0pt]
@@ -61,27 +53,6 @@
     \item \textbf{Mar 11-15:} MITRE ATT\&CK mapping
     \item \textbf{Mar 16-20:} Report generation, evaluation, and final write-up
     \item \textbf{Mar 22:} Final submission
-\end{itemize}
-
-\textbf{Task Breakdown:}
-\begin{itemize}[leftmargin=*, itemsep=0pt]
-    \item \textbf{Dataset download and organization:} Ikram
-    \item \textbf{Dataset cleaning and statistics:} Fatima Zahra
-    \item \textbf{Log parsing module (lead):} Fatima Zahra
-    \item \textbf{Log parsing module (support/testing):} Ikram
-    \item \textbf{Feature extraction script (lead):} Ikram
-    \item \textbf{Feature extraction script (support):} Fatima Zahra
-    \item \textbf{LLM prompt design and integration (lead):} Fatima Zahra
-    \item \textbf{LLM output post-processing (support):} Ikram
-    \item \textbf{Signature class code generation (lead):} Ikram
-    \item \textbf{Signature validation (unit tests, lead):} Fatima Zahra
-    \item \textbf{MITRE ATT\&CK mapping research (lead):} Ikram
-    \item \textbf{MITRE ATT\&CK mapping implementation (lead):} Fatima Zahra
-    \item \textbf{Report generator (draft, lead):} Fatima Zahra
-    \item \textbf{Report generator (review and polish, support):} Ikram
-    \item \textbf{Evaluation metrics calculation (lead):} Ikram
-    \item \textbf{Baseline comparison experiments (lead):} Fatima Zahra
-    \item \textbf{Final report writing:} Both
 \end{itemize}
 
 \textbf{Dependencies and Risks:}
@@ -118,7 +89,7 @@
 \caption{Related work comparison}
 \end{table}
 
-Recent research has explored the use of deep learning and large language models (LLMs) for automating malware signature generation and behavioral analysis. DeepSign (David et al., 2017) introduced a deep belief network approach for generating robust malware signatures from sandbox logs, demonstrating high accuracy in classifying new variants. Open-source projects such as Automatic-Malware-Signature-Generation provide practical tools for automating signature creation, though they may not target the CAPEv2 format or integrate MITRE ATT\&CK mapping. The LLM-Virus topic and related discussions highlight the growing interest in leveraging LLMs for malware analysis and signature automation. Our work builds on these foundations by focusing on the automated generation of actionable CAPEv2 Python signatures from sandbox execution logs, mapping behaviors to MITRE ATT\&CK techniques, and synthesizing comprehensive analysis reports using LLMs.
+Recent work applies deep learning and LLMs to automate malware signature generation and analysis. Prior approaches (e.g., DeepSign, open-source tools) focus on signature creation from sandbox logs, but often lack CAPEv2 support or ATT\&CK mapping. Our work targets automated CAPEv2 Python signature generation, ATT\&CK mapping, and LLM-driven report synthesis.
 
 \subsection{Dataset Selection}
 \begin{itemize}[leftmargin=*, itemsep=0pt]

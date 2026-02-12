@@ -4,7 +4,7 @@
 \usepackage{enumitem}
 \usepackage{hyperref}
 \usepackage{graphicx}
-\setlength{\parskip}{0.5em}
+\setlength{\parskip}{0.4em}
 
 \title{Project Plan: Automated Dynamic Analysis Signature Generation (Project 3)}
 \author{Ikram Benfellah, Fadel Fatima Zahra}
@@ -16,9 +16,8 @@
 \section{Project Information}
 \begin{itemize}[leftmargin=*, itemsep=0pt]
     \item \textbf{Project Title:} Automated Dynamic Analysis Signature Generation
-    \item \textbf{Project Number:} 3
     \item \textbf{Team Members:} Ikram Benfellah , Fadel Fatima Zahra
-    \item \textbf{GitHub Repository:} \url{https://github.com/yourusername/your-repo}
+    \item \textbf{GitHub Repository:} \url{https://github.com/ykram051/Automated-Dynamic-Analysis-Signature-Generation}
 \end{itemize}
 
 \section{Methodology}
@@ -45,7 +44,6 @@
 \section{Implementation Plan}
 \textbf{Timeline and Milestones:}
 \begin{itemize}[leftmargin=*, itemsep=0pt]
-    \item \textbf{Jan 25:} Project plan submission
     \item \textbf{Feb 1-10:} Dataset acquisition and preprocessing
     \item \textbf{Feb 11-20:} Log parser and feature extraction
     \item \textbf{Feb 21-Mar 1:} LLM-based behavior analysis
@@ -66,30 +64,38 @@
 \section{Research Component}
 \subsection{Research Questions}
 \begin{enumerate}[leftmargin=*, itemsep=0pt]
-    \item How accurate are LLM-generated behavioral signatures compared to manually crafted ones?
-    \item Can automated signature generation reduce malware analysis time?
-    \item How well do generated signatures generalize to new malware variants?
+    \item What is the precision, recall, and F1-score of LLM-generated CAPEv2 behavioral signatures compared to manually crafted signatures on a held-out malware test set?
+    \item To what extent do LLM-generated signatures detect unseen variants from new malware families (i.e., generalization rate on out-of-family samples)?
+    \item How accurate is the automated mapping of behaviors to MITRE ATT\&CK techniques (measured by correct technique assignments vs. expert annotation)?
 \end{enumerate}
 
 
 \subsection{Related Work}
+
 \begin{table}[h!]
 \centering
 \begin{tabular}{|p{2.5cm}|p{3cm}|p{3cm}|p{3cm}|}
 \hline
 \textbf{Paper/Tool} & \textbf{Approach} & \textbf{Key Contribution} & \textbf{Our Difference} \\
 \hline
-\href{https://arxiv.org/pdf/1711.08336}{DeepSign (2017)} & Deep learning (DBN) for automatic malware signature generation from sandbox logs & Demonstrates that deep learning can generate robust, invariant behavioral signatures for malware classification & We focus on generating actionable CAPEv2 Python signatures and mapping to MITRE ATT\&CK, with LLM-based automation \\
+\href{https://doi.org/10.13140/RG.2.2.23054.16960}{Graph-Ensemble Methods (2024)} & Ensemble of GNNs and NLP for API call sequence analysis & Improves detection accuracy using graph models, automates signature generation with GNNExplainer, maps to MITRE ATT\&CK & We use LLMs for CAPEv2 Python signature generation, not GNNs. \\
 \hline
-\href{https://github.com/cmikke97/Automatic-Malware-Signature-Generation}{Automatic-Malware-Signature-Generation (GitHub)} & Open-source tool for automated malware signature generation & Provides practical implementation and code for signature automation & Our work targets CAPEv2 format, integrates MITRE ATT\&CK mapping, and explores LLM-driven signature synthesis \\
+\href{https://arxiv.org/pdf/1711.08336}{DeepSign (2017)} & Deep learning (DBN, denoising autoencoders) for invariant malware signature generation & Achieves 98.6\% accuracy on new malware variants; agnostic to input type (API calls, registry, etc.) & We automate CAPEv2 Python signatures and ATT\&CK mapping with LLMs. \\
 \hline
-\href{https://www.emergentmind.com/topics/llm-virus}{LLM-Virus (EmergentMind)} & Explores LLMs for malware analysis and signature creation & Highlights the potential of LLMs for automating malware signature generation and analysis & We apply LLMs specifically to automate CAPEv2 signature creation from sandbox logs and behavioral patterns \\
+\href{https://github.com/cmikke97/Automatic-Malware-Signature-Generation}{Automatic-Malware-Signature-Generation (GitHub)} & Open-source tool for automated malware signature generation & Provides practical implementation and code for signature automation & We target CAPEv2 format and add ATT\&CK mapping using LLMs. \\
 \hline
 \end{tabular}
 \caption{Related work comparison}
 \end{table}
 
-Recent work applies deep learning and LLMs to automate malware signature generation and analysis. Prior approaches (e.g., DeepSign, open-source tools) focus on signature creation from sandbox logs, but often lack CAPEv2 support or ATT\&CK mapping. Our work targets automated CAPEv2 Python signature generation, ATT\&CK mapping, and LLM-driven report synthesis.
+\textbf{Implementations for Comparison:}
+\begin{itemize}[leftmargin=*, itemsep=0pt]
+    \item \textbf{Graph-Ensemble Methods:} No public code found; method described in detail for reproducibility.
+    \item \textbf{DeepSign:} No official code, but method is reproducible from paper.
+    \item \textbf{Automatic-Malware-Signature-Generation:} \href{https://github.com/cmikke97/Automatic-Malware-Signature-Generation}{GitHub repository available}.
+\end{itemize}
+
+Recent work applies deep learning and graph neural networks to automate malware signature generation and analysis. DeepSign and graph-ensemble methods focus on robust, invariant signature creation from behavioral logs, but do not target CAPEv2 or automate Python signature generation. Open-source tools provide automation but lack ATT\&CK mapping and LLM integration. Our work uniquely automates CAPEv2 Python signature generation, ATT\&CK mapping, and LLM-driven report synthesis for dynamic malware analysis.
 
 \subsection{Dataset Selection}
 \begin{itemize}[leftmargin=*, itemsep=0pt]
@@ -102,7 +108,7 @@ Recent work applies deep learning and LLMs to automate malware signature generat
 
 \section{Evaluation Plan}
 \begin{itemize}[leftmargin=*, itemsep=0pt]
-    \item \textbf{Metrics:} Precision, recall, F1-score (signature quality), coverage, ATT\&CK mapping accuracy, report quality (expert review), efficiency (time savings)
+    \item \textbf{Metrics:} Precision, recall, F1-score (signature quality), coverage, ATT\&CK mapping accuracy, efficiency (time savings)
     \item \textbf{Baselines:} Existing CAPEv2 signatures, manual analyst signatures, rule-based detection
     \item \textbf{Experimental Setup:} Evaluate on held-out test set, compare to baselines, statistical significance via paired t-test
     \item \textbf{Expected Outcomes:} LLM-generated signatures are competitive with manual, improve efficiency, and provide robust ATT\&CK mapping

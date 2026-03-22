@@ -2,7 +2,7 @@
 data/
 *.json
 
-# LaTeX generated files
+# LaTeX generated files (keep final report PDFs)
 *.aux
 *.log
 *.out
@@ -15,7 +15,9 @@ data/
 *.bbl
 *.blg
 *.dvi
-*.pdf
+*.nav
+*.snm
+# Note: Final report PDFs ARE committed
 
 # Python
 __pycache__/

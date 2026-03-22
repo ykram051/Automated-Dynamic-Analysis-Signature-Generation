@@ -10,13 +10,22 @@ def print_section(title: str) -> None:
 
 
 def main() -> None:
+    repo_root = Path(__file__).resolve().parent.parent
+    default_report = (
+        repo_root
+        / "data"
+        / "public_small_reports"
+        / "public_small_reports"
+        / "00003d128a7eb859f65f5780d8fa2b5e52d472665678bf6e388e857fbaed773a.json"
+    )
+
     parser = argparse.ArgumentParser(
         description="Inspect a CAPEv2 JSON report and print useful key structure details."
     )
     parser.add_argument(
         "report_path",
         nargs="?",
-        default="data/public_small_reports/public_small_reports/00003d128a7eb859f65f5780d8fa2b5e52d472665678bf6e388e857fbaed773a.json",
+        default=str(default_report),
         help="Path to a CAPEv2 JSON report file (default: sample report in data folder)",
     )
     args = parser.parse_args()

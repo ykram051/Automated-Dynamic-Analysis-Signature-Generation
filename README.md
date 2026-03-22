@@ -123,13 +123,13 @@ The system automatically identifies and maps 30+ ATT&CK techniques, including:
 
 ### Option 1: Docker (Recommended)
 
-#### Using docker-compose (Easiest):
+#### Using Docker Compose (Easiest):
 ```bash
 # Start services
 ./start.sh
 
 # Enter the container
-docker-compose exec cape-signature-gen bash
+docker compose exec cape-signature-gen bash
 
 # Run a specific notebook inside the container
 jupyter notebook
@@ -141,8 +141,10 @@ jupyter notebook
 docker build -t cape-signature-gen .
 
 # Run the container with volume mount
-docker-compose up -d
+docker compose up -d
 ```
+
+If your system uses legacy Compose v1, replace `docker compose` with `docker-compose`.
 
 ### Option 2: Local Python Installation
 
@@ -303,7 +305,7 @@ chmod +x start.sh
 ./start.sh
 
 # Inside container, run notebooks
-docker-compose exec cape-signature-gen jupyter notebook --ip=0.0.0.0 --no-browser
+docker compose exec cape-signature-gen jupyter notebook --ip=0.0.0.0 --no-browser
 ```
 
 **Option B: Local Python**

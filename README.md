@@ -123,6 +123,22 @@ The system automatically identifies and maps 30+ ATT&CK techniques, including:
 
 ### Option 1: Docker (Recommended)
 
+#### One-click startup scripts
+```bash
+# Linux/macOS
+./start.sh
+```
+
+```powershell
+# Windows PowerShell
+.\start.ps1
+```
+
+```bat
+:: Windows double-click / CMD
+start.bat
+```
+
 #### Using Docker Compose (Easiest):
 ```bash
 # Start services

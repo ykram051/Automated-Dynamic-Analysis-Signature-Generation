@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   cape-signature-gen:
     build:

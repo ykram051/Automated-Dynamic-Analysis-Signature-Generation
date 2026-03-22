@@ -3,6 +3,7 @@ data/
 *.json
 
 # LaTeX generated files (keep final report PDFs)
+*.tex
 *.aux
 *.log
 *.out
